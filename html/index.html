@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link
+      rel="stylesheet"
+      href="../module/bootstrap-5.2.2-dist/css/bootstrap.css"
+    />
+    <script src="../module/jquery-3.6.1.min.js"></script>
+    <script src="../module/bootstrap-5.2.2-dist/js/bootstrap.js"></script>
+    <script src="../module/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../module/d3-7.7.0/dist/d3.min.js"></script>
+    <script src="../module/highcharts-10.3.2/code/highcharts.js"></script>
+    <script src="../module/amcharts5/index.js"></script>
+    <script src="../module/amcharts5/xy.js"></script>
+    <script src="../module/amcharts5/themes/Animated.js"></script>
+    <title>EME 戰情看板-5</title>
+  </head>
+  <body>
+    <canvas class="rain"></canvas>
+    <header>
+      <div class="position">
+        <h1>EME 戰情看板-5</h1>
+        <p>數據可視化頁面</p>
+      </div>
+    </header>
+    <div class="main d-flex">
+      <div class="left">
+        <div class="topTitle">品牌銷售Top5</div>
+        <div class="top5">
+          <ul>
+            <li id="record" class="recordLi d-flex">
+              <div class="greenCircle"></div>
+              <div class="greenBorder">
+                <span class="brand"></span>
+                <span class="count"></span>
+                <span class="percent"></span>
+                <span class="upAndDown"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="topTitle">分類銷售分析</div>
+      </div>
+      <div class="middle">
+        <canvas class="dash"></canvas>
+        <div class="saleYear">
+          <div class="saleTitle green">年銷售</div>
+          <div class="saleNum orange">0</div>
+        </div>
+        <div class="saleMonth">
+          <div class="saleTitle green">月銷售</div>
+          <div class="saleNum orange">0</div>
+        </div>
+        <div class="saleWeek">
+          <div class="saleTitle green">週銷售</div>
+          <div class="saleNum orange">0</div>
+        </div>
+        <div class="saleDay">
+          <div class="saleTitle green">日銷售</div>
+          <div class="saleNum orange">0</div>
+        </div>
+        <div class="bigCircle rotate"></div>
+        <div class="smallCricleLeft rotate"></div>
+        <div class="smallCricleRight rotate"></div>
+        <div class="cricleLeft rotate"></div>
+        <div class="cricleRight rotate"></div>
+        <div class="soleOut orange">
+          <div class="ballPercent">87%</div>
+          <div class="ballTitle">售罄率</div>
+        </div>
+        <div class="completion green">
+          <div class="ballPercent">87%</div>
+          <div class="ballTitle">完成率</div>
+        </div>
+        <div class="yearOnYear orange">
+          <div class="ballPercent">87%</div>
+          <div class="ballTitle">同比</div>
+        </div>
+        <div class="discount green">
+          <div class="ballPercent">87%</div>
+          <div class="ballTitle">折扣率</div>
+        </div>
+        <div class="earth"></div>
+        <div class="cloud">
+          <div class="totelTil">銷售總額</div>
+          <div class="totelNum">0</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="topTitle">銷售情況分析</div>
+        <div class="saleAnalyze">
+          <div class="target d-flex">
+            <div class="img">
+              <img src="../img/s1.png" />
+            </div>
+            <div class="text">
+              <div id="targetTitle" class="title">
+                <div class="titleMain">銷售目標</div>
+                <span>Marketing Target</span>
+              </div>
+              <div id="targetNum" class="num"></div>
+            </div>
+          </div>
+          <div class="actual d-flex">
+            <div class="img">
+              <img src="../img/s3.png" />
+            </div>
+            <div class="text">
+              <div id="actualTitle" class="title">
+                <div class="titleMain">銷售目標</div>
+                <span>Marketing Target</span>
+              </div>
+              <div id="actualNum" class="num"></div>
+            </div>
+          </div>
+          <div class="total d-flex">
+            <div class="img">
+              <img src="../img/s2.png" />
+            </div>
+            <div class="text">
+              <div id="totalTitle" class="title">
+                <div class="titleMain">銷售目標</div>
+                <span>Marketing Target</span>
+              </div>
+              <div id="totalNum" class="num"></div>
+            </div>
+          </div>
+        </div>
+        <div class="finishState d-flex">
+          <div class="text">完成情況</div>
+          <div class="saleFinish saleRotate rotate"></div>
+          <div
+            id="liquidChartLeft"
+            data-role="fillgauge"
+            data-height="85"
+            data-width="85"
+            data-chart-padding="0"
+            data-display-percent="true"
+            data-display-text="true"
+            data-number-current="78"
+            data-number-max="100"
+            data-circle-color="none"
+            data-text-color="#000000"
+            data-wave-text-color="#ffffff"
+            data-wave-color="#0ac1c7"
+            data-border-width="3"
+            data-border-color="#0ac1c7"
+            data-text-vert-position="0.5"
+            data-text-horz-position="5"
+            data-wave-animate-time="1500"
+          ></div>
+          <div class="salePrecent saleRotate rotate"></div>
+          <div
+            id="liquidChartRight"
+            data-role="fillgauge"
+            data-height="85"
+            data-width="85"
+            data-chart-padding="0"
+            data-display-percent="true"
+            data-display-text="true"
+            data-number-current="58"
+            data-number-max="100"
+            data-circle-color="none"
+            data-text-color="#000000"
+            data-wave-text-color="#ffffff"
+            data-wave-color="#0ac1c7"
+            data-border-width="3"
+            data-border-color="#0ac1c7"
+            data-text-vert-position="0.5"
+            data-text-horz-position="5"
+            data-wave-animate-time="1500"
+          ></div>
+        </div>
+      </div>
+      <div id="categorySales">
+        <div class="shoes d-flex">
+          <div class="salesImg">
+            <img src="../img/shoe.png">
+          </div>
+          <div class="salesItem">
+            <div class="salesText">鞋類</div>
+            <div class="shoesNum green"></div>
+          </div>
+          <div id="shoesChart"></div>
+          <div class="chartPercent"></div>
+        </div>
+        <div class="clothes d-flex">
+          <div class="salesImg">
+            <img src="../img/clothes.png">
+          </div>
+          <div class="salesItem">
+            <div class="salesText">服裝</div>
+            <div class="clothesNum green"></div>
+          </div>
+          <div id="clothesChart"></div>
+          <div class="chartPercent"></div>
+        </div>
+        <div class="hats d-flex">
+          <div class="salesImg">
+            <img src="../img/mz.png">
+          </div>
+          <div class="salesItem">
+            <div class="salesText">配飾</div>
+            <div class="hatsNum green"></div>
+          </div>
+          <div id="hatsChart"></div>
+          <div class="chartPercent"></div>
+        </div>
+      </div>
+      <div id="saleLineChart"></div>
+    </div>
+    <div class="bottom">
+      <div class="position">
+        <h4>數據狀況</h4>
+        <p>Data Status</p>
+      </div>
+    </div>
+  
+    <script src="../js/fackData.js"></script>
+    <script src="../js/index.js"></script>
+  </body>
+</html>
