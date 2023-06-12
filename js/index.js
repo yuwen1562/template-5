@@ -111,10 +111,10 @@ function brandTop5() {
         ele
           .find("> .upAndDown")
           .html(
-            "<img style='vertical-align: unset' src='../img/up.png'></img>"
+            "<img style='vertical-align: unset' src='./img/up.png'></img>"
           );
       } else if (obj.upAndDown == "down") {
-        ele.find("> .upAndDown").html("<img src='../img/down.png'></img>");
+        ele.find("> .upAndDown").html("<img src='./img/down.png'></img>");
       } else console.log("upAndDown error");
     }
   }
@@ -129,21 +129,21 @@ function top5Carousel(){
   setInterval(function () {
     //被選取者改變成橘色
     top5Ele.eq(i).find('.greenCircle').css({
-      'background': 'url(../img/orange.png) no-repeat center',
+      'background': 'url(./img/orange.png) no-repeat center',
       'background-size': '100%'
     })
     top5Ele.eq(i).find('.greenBorder').css({
-      'background': 'url(../img/border2.png) no-repeat center',
+      'background': 'url(./img/border2.png) no-repeat center',
       'background-size': 'contain'
     })
 
     //其他改變回綠色
     top5Ele.eq(i).siblings().find('.greenCircle').css({
-      'background': 'url(../img/green.png) no-repeat center',
+      'background': 'url(./img/green.png) no-repeat center',
       'background-size': '100%'
     })
     top5Ele.eq(i).siblings().find('.greenBorder').css({
-      'background': 'url(../img/border.png) no-repeat center',
+      'background': 'url(./img/border.png) no-repeat center',
       'background-size': 'contain'
     })
 
